@@ -15,7 +15,30 @@ const routes = [
   {
     path: '/movie',
     name: 'movie',
-	component: MovieView
+	component: MovieView,
+	children: [
+		{
+			path: 'city',
+			name: 'city',
+			component:  () => import('../components/City.vue')
+		},
+		{
+			path: 'now',
+			name: 'now',
+			component:  () => import('../components/Now.vue')
+		},
+		{
+			path: 'coming',
+			name: 'coming',
+			component:  () => import('../components/Coming.vue')
+		},
+		{
+			path: 'search',
+			name: 'search',
+			component:  () => import('../components/Search.vue')
+		}
+		
+	]
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.

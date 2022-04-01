@@ -23,6 +23,7 @@ export default{
 <style scoped>
 	#mine{
 		padding-top: 50px;
+		padding-bottom: 50px;
 	}
 	input{
 		border: none;

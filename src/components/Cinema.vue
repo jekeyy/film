@@ -22,31 +22,27 @@ export default{
 	name: 'Cinema',
 	data(){
 		return {
-			cinemaList: [{
-				id: 1,
-				name: '大地影院延庆金锣湾店',
-				price: 38.5,
-				address: '延庆区北街39号H座首层',
-				distance: 100
-			},{
-				id: 2,
-				name: '燕山影剧院',
-				price: 37.5,
-				address: '房山区燕山岗南路3号',
-				distance: 120
-			},{
-				id: 3,
-				name: '万达影城昌平保利光魔店',
-				price: 37.9,
-				address: '昌平区鼓楼南街佳莲时代广场四层',
-				distance: 80
-			},{
-				id: 4,
-				name: '门头沟影剧院',
-				price: 30.9,
-				address: '门头沟区新桥大街12号',
-				distance: 110
-			}]
+			cinemaList: []
+		}
+	},
+	created(){
+		this.getCinemaData();
+	},
+	methods: {
+		getCinemaData(){
+			// var that = this;
+			axios.get('/mock/cinema.json')
+			  .then(response => {
+			    console.log(response);
+				if(response.status == 200){
+					if(response.data && response.data.cinemaList){
+						this.cinemaList = response.data.cinemaList;
+					}
+				}
+			  })
+			  .catch(function (error) {
+			    console.log(error);
+			  });
 		}
 	}
 	
