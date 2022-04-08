@@ -28,8 +28,9 @@ export default{
 	input{
 		border: none;
 		border-bottom: 1px solid #ccc;
-		width: 100%;
+		width: 95%;
 		height: 40px;
+		margin-left: 10px;
 		padding-left: 10px;
 		outline: 0;
 	}

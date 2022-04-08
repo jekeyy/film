@@ -7,10 +7,11 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    // name: 'movie',
-    // component: MovieView
-	name: 'cinema',
-	component: () => import('../views/cinema/index.vue')
+    name: 'movie',
+    component: MovieView,
+	redirect:'/movie/now'
+	// name: 'cinema',
+	// component: () => import('../views/cinema/index.vue')
   },
   {
     path: '/movie',
@@ -36,7 +37,11 @@ const routes = [
 			path: 'search',
 			name: 'search',
 			component:  () => import('../components/Search.vue')
-		}
+		},
+		// {
+		// 	path:'/',
+		// 	redirect:'/movie/now'
+		// }
 		
 	]
     // route level code-splitting

@@ -1,0 +1,4 @@
+git clone http地址
+cd film
+npm install下载node_modules
+npm run serve启动项目
