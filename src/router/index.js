@@ -9,7 +9,7 @@ const routes = [
     path: '/',
     name: 'movie',
     component: MovieView,
-	redirect:'/movie/now'
+	redirect:'/movie/coming'
 	// name: 'cinema',
 	// component: () => import('../views/cinema/index.vue')
   },

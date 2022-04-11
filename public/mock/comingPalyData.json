@@ -1,0 +1,40 @@
+{
+	"comingPalyData":[{
+		"id":1,
+		"img":"/images/007.png",
+		"name":"佐罗和麦克斯",
+		"score":46465,
+		"actors":"主演：格兰特·鲍尔 艾米·斯马特 博伊德·肯斯特纳"
+	},{
+		"id":2,
+		"img":"/images/008.png",
+		"name":"废材特工",
+		"score":64645,
+		"actors":"主演：杰西·艾森伯格，克里斯汀·斯图尔特，约翰·雷吉扎莫"
+	},{
+		"id":3,
+		"img":"/images/009.png",
+		"name":"凤凰城遗忘录",
+		"score":42465,
+		"actors":"主演：Clint Jordan"
+	},{
+		"id":4,
+		"img":"/images/010.png",
+		"name":"新灰姑娘",
+		"score":46465,
+		"actors":"主演：Cassandra Morris，Kristen Day"
+	},{
+		"id":5,
+		"img":"/images/011.png",
+		"name":"鲨卷风4：四度觉醒",
+		"score":38465,
+		"actors":"主演：塔拉·雷德，Ian Ziering，Masiela Lusha"
+	},{
+		"id":6,
+		"img":"/images/012.png",
+		"name":"全境警戒",
+		"score":46465,
+		"actors":"主演： 戴夫·巴蒂斯塔，布兰特妮·斯诺，Angelic Zambrana"
+	}
+	]
+}          

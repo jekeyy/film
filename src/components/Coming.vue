@@ -1,16 +1,16 @@
 <template>
   <div id="now">
 	<ul>
-		<li>
-			<div class="img-wraper"><img src="/images/001.png" ></div>
+		<li v-for="item in comingPalyData" :key="item.id">
+			<div class="img-wraper"><img :src="item.img" ></div>
 			<div class="desc-wraper">
-				<p class="name">机械师2：复活</p>
-				<p><span class="desc-color">观众评</span><span class="score">8.9</span></p>
-				<p class="desc-color actors">主演： 杰森·斯坦森 杰西卡·阿尔芭 汤米·李·琼斯 杨紫琼 山姆·哈兹尔丁</p>
-				<p class="desc-color">今天50家影院放映800场</p>
+				<p class="name">{{item.name}}</p>
+				<p><span class="score">{{item.score}}</span><span class="desc-color">想看</span></p>
+				<p class="desc-color actors">{{item.actors}}</p>
+				<p class="desc-color">未来30天内上映</p>
 			</div>
 			<div class="button-wraper">
-				<button type="button">购票</button>
+				<button type="button">预售</button>
 			</div>	
 		</li>
 	</ul>  
@@ -18,18 +18,39 @@
   </div>
 </template>
 <script>
-	// export default{
-	// 	name:'Now',
-	// 	data(){
-	// 		return{
-	// 			nowPlayData;[{
-	// 				'name':'hh'
-	// 			}]
-	// 		}
-	// 	}
-	// }
+	export default{
+		name:'Coming',
+		data(){
+			return{
+				comingPalyData:[]
+			}
+		},
+		created(){
+			this.getcomingPalyData();
+		},
+		methods: {
+			getcomingPalyData(){
+				// var that = this;
+				axios.get('/mock/comingPalyData.json')
+				  .then(response => {
+				    console.log(response);
+					if(response.status == 200){
+						if(response.data && response.data.comingPalyData){
+							this.comingPalyData = response.data.comingPalyData;
+						}
+					}
+				  })
+				  .catch(function (error) {
+				    console.log(error);
+				  });
+			}
+		}
+	}
 </script>
 <style scoped>
+	#now{
+		margin-bottom: 50px;
+	}
 	.button-wraper{
 		float: right;
 		line-height: 80px;
@@ -54,15 +75,15 @@
 	}
 	.desc-color{
 		color: #666;
-		font-size: 14px;
+		font-size: 15px;
 	}
 	.name{
 		font-size: 18px;
 		font-weight: bold;
 	}
 	.score{
-		color: #FF9900;
-		font-weight: bold;
+		color: #666;
+		font-size: 15px;
 		margin-left: 5px;
 	}
 	.actors{
@@ -77,7 +98,7 @@
 		border: none;
 		width: 50px;
 		height: 30px;
-		background-color: green;
+		background-color:#3ea0e7;
 		color: white;
 		border-radius: 5px;
 	}
