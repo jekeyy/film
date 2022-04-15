@@ -7,9 +7,9 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
-    name: 'movie',
-    component: MovieView,
-	redirect:'/movie/coming'
+    redirect: 'movie',
+ //    component: MovieView,
+	// redirect:'/movie/city'
 	// name: 'cinema',
 	// component: () => import('../views/cinema/index.vue')
   },
@@ -37,6 +37,10 @@ const routes = [
 			path: 'search',
 			name: 'search',
 			component:  () => import('../components/Search.vue')
+		},
+		{
+			path: '/movie',
+			redirect:'/movie/search'
 		},
 		// {
 		// 	path:'/',

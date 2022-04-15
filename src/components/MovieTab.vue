@@ -6,7 +6,11 @@
 			<router-link tag="span" to="/movie/coming">即将上映</router-link>
 			<router-link tag="span" to="/movie/search"><i class="fa fa-search"></i></router-link>
 		</div>
-		<router-view></router-view>
+		<hr >
+		<keep-alive>
+			<router-view></router-view>
+		</keep-alive>
+		
 	</div>
 </template>
 
@@ -14,6 +18,11 @@
 </script>
 
 <style scoped>
+	hr{
+		border: 0;
+		border-bottom: 1px solid #ccc;
+		margin-top: 1px;
+	}
 	#movie{
 		padding-top: 50px;
 	}
