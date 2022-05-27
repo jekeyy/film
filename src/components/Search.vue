@@ -1,41 +1,111 @@
 <template>
-  <div id="search">
+  <div id="app">
 	  <div class="sou-suo">
 		<i class="fa fa-search"></i>
-		<input type="text"/>
+		<input type="text" v-model="selectVal" />
 	  </div>
 	  <div class="fen-lei">
 	  	<p>电影/电视剧/综艺</p>
 	  </div>
 	<ul>
-		<li>
-			<div class="img-wraper"><img src="/images/001.png" ></div>
+		<li><div v-for="item in nowPlayDatar()" :key="item.id" class="aaa">
+			<div class="img-wraper"><img :src="item.img"></div>
 			<div class="desc-wraper">
-				<p class="name">机械师2</p>
-				<p><span class="desc-color">剧情，喜剧，犯罪</span></p>
-				<p class="desc-color">2020-6-30</p>
+				<p class="name">{{item.name}}</p>
+				<p><span class="desc-color">{{item.actors}}</span></p>
+				<p class="desc-color">{{item.nums}}</p>
 			</div>
 			<div class="button-wraper">
-				<p><span class="score">8.9</span></p>
-			</div>	
+				<p><span class="score">{{item.score}}</span></p>
+			</div>	</div>
 		</li>
-	</ul>  
+	</ul> 
     
   </div>
 </template>
 <script>
-	// export default{
-	// 	name:'Now',
-	// 	data(){
-	// 		return{
-	// 			nowPlayData;[{
-	// 				'name':'hh'
-	// 			}]
-	// 		}
-	// 	}
-	// }
+	export default{
+		name:'Now',
+		data(){
+			return{
+				nowPlayData:[],
+				selectVal:'',
+			}
+		},
+		created(){
+			this.getNowData();
+		},
+		methods: {
+			nowPlayDatar(){
+				if (!this.selectVal){
+					return this.nowPlayData;
+				}
+				return this.Search
+			},
+			getNowData(){
+				// var that = this;
+				axios.get('/mock/nowPalyData.json')
+				  .then(response => {
+				    console.log(response);
+					if(response.status == 200){
+						if(response.data && response.data.nowPlayData){
+							this.nowPlayData = response.data.nowPlayData;
+						}
+					}
+				  })
+				  .catch(function (error) {
+				    console.log(error);
+				  });
+			}
+			},
+			computed:{
+				Search(){
+					if(this.selectVal){
+						return this.nowPlayData.filter((value)=>{
+							return value.name.includes(this.selectVal);
+						});
+					}
+				}
+			},
+			
+			// watch:{
+			// 	selectVal(){
+			// 		const result=[]
+			// 		for (let i=0;i<this.nowPlayData.length;i++){
+			// 			const listA=this.nowPlayData[i]
+			// 			if(listA.value.search(this.selectVal)!==-1&&this.selectVal!==''){
+			// 				result.push(this.nowPlayData[i].value)
+			// 			}
+			// 		}
+			// 		this.nowPlayDatar=result
+			// 	}
+			// }
+			// queryData(){
+			// 		let nowPlayData=this.orgnowPlayData.filter(item=>item.indexOf(this.selectVal)>=0);
+			// 		this.orgnowPlayData=nowPlayData;
+			// },
+			
+			// 	nowPlayDatar:function(){
+			// 		var selectVal=this.selectVal;
+			// 		if(selectVal){
+			// 			return this.nowPlayData.filter(function(product){
+			// 				return Object.keys(product).some(function(key){
+			// 					return String(product[key]).toLowerCase().indexOf(selectVal)>-1
+			// 				})
+			// 			})
+			// 		}
+			// 		return this.nowPlayData;
+			// 	}
+			// },
+		
+	}
 </script>
 <style scoped>
+	.aaa{
+		display: flex;
+		flex-direction: row;
+		margin-bottom: 10px;
+	}
 	.sou-suo{
 		background-color: #f5f6f5;
 		height: 50px;
